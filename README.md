@@ -5,4 +5,4 @@ Création d'un carnet de notes ou nous pouvons ajouter, et supprimer des notes a
 
 Utilisation de: npm install yargs
 
-
+Création d'un fichier data.json où nous allons stocker toutes les notes

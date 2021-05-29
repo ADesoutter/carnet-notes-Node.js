@@ -60,6 +60,34 @@ yargs.command({
         }
     },
     handler: () => {
-        console.log("On peut lire le détail des notes");
+
+            // récupérer le fichier
+        fs.readFile ("data.json", "utf-8", (err,dataStr) => {
+            if(err) console.log(err);
+            else {
+             console.log(dataStr);
+             
+             // Je transforme le JSON en objet JS
+             const dataObjJS = JSON.parse(dataStr);
+             console.log(dataObjJS);
+
+             // Execute les modifications
+             dataObjJS.title = "Super titre";
+             dataObjJS.message= "Superman est le meilleur";
+             console.log(dataObjJS);
+
+             // Transformer les modifs en JSON grace à stringify
+             const changeNoteJSON = JSON.stringify(dataObjJS);
+             console.log(changeNoteJSON);
+
+             //Envoyer les modifs à mon data.json
+             fs.writeFile("data.json", changeNoteJSON,(err) => {
+                 if(err) console.log(err);
+                 else {
+                     console.log("La notea été modifié");
+                 }
+             });
+            }
+        })
     }
 }).argv
